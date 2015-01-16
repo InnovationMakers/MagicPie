@@ -508,7 +508,7 @@ static NSString * const _animationValuesKey = @"animationValues";
 - (void)drawValuesText:(CGContextRef)ctx sumValues:(float)sum
 {
     NSArray *values = self.presentValues?: self.values;
-    CGContextSetShadowWithColor(ctx, CGSizeMake(0,1), 3, [UIColor blackColor].CGColor);
+    //CGContextSetShadowWithColor(ctx, CGSizeMake(0,1), 3, [UIColor blackColor].CGColor);
     
     float angleStart = self.startAngle * M_PI / 180.0;
     float angleInterval = (self.endAngle - self.startAngle) * M_PI / 180.0;
@@ -516,7 +516,7 @@ static NSString * const _animationValuesKey = @"animationValues";
     for(PieElement* elem in values){
         float angleEnd = angleStart + angleInterval * elem.val / sum;
         BOOL showTitle = elem.showTitle || self.showTitles == ShowTitlesAlways;
-        if(!showTitle || elem.titleAlpha <= 0.01){
+        if(!showTitle){//|| elem.titleAlpha <= 0.01){
             angleStart = angleEnd;
             continue;
         }
